@@ -56,6 +56,7 @@ class Game
     json = JSON.parse(response.body)
     @player_id = json.fetch("you").fetch("id")
     @match_id = json.fetch("data").fetch("id")
+    puts "Starting match: #{json.fetch("data").fetch("name")}!"
     connection.post("/matches/#{match_id}/start")
   end
 
