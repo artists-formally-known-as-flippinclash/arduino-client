@@ -92,6 +92,7 @@ class Game
     end
 
     leds = FEEDBACK_LEDS.dup
+    leds.each { |led| matrix.off(led.x, led.y); sleep 0.01 }
     feedback.fetch("position_count").times do
       led = leds.shift
       matrix.on(led.x, led.y, 255,0,0)
