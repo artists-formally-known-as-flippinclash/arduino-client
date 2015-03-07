@@ -107,13 +107,20 @@ class Game
 
   def refresh_display
     entry.each_with_index do |entry_peg, index|
-      matrix.on(0,index,*COLOR_MAP[entry_peg])
-      sleep 0.01
+      5.times do |n|
+        matrix.on(n,index,*COLOR_MAP[entry_peg])
+        sleep 0.01
+      end
     end
   end
 
   def clear_display
-    4.times { |n| matrix.off(0,n); sleep 0.01 }
+    4.times do |n|
+      5.times do |m|
+        matrix.off(m,n)
+        sleep 0.01
+      end
+    end
   end
 end
 
