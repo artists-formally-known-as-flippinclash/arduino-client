@@ -79,6 +79,18 @@ class Game
     feedback = json.fetch("data").fetch("feedback")
     colors = { "position_count" => [255,0,0], "peg_count" => [255,255,255] }
 
+    if json.fetch("data").fetch("outcome") == "correct"
+      loop do
+        x = (rand * 5).to_i
+        y = (rand * 8).to_i
+        red = (rand * 200).to_int
+        green = (rand * 200).to_int
+        blue = (rand * 200).to_int
+        matrix.on(x,y,red,green,blue)
+        sleep 0.1
+      end
+    end
+
     leds = FEEDBACK_LEDS.dup
     feedback.fetch("position_count").times do
       led = leds.shift
